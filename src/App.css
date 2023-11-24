@@ -13,10 +13,24 @@
   
 }
 .allauthors{
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   height: 200px;
   width: 200px;
   justify-content: space-evenly;
   margin: 40px;
   background-color: lavender;
 }
+
+.arranging{
+display: flex;
+}
+
+.routers{
+  height: 50px;
+  width: 100%;
+  background-color: rgb(195, 232, 233);
+  margin:20px;
+  border-radius: 10px;
+}
+

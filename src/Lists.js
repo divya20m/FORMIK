@@ -13,9 +13,9 @@ export function Lists({ lists, setLists }) {
     isbn: Yup.string()
       .required("ISBN is required")
       .matches(/^\d{15}$/, "ISBN must contain exactly 15 numbers"),
-    dob: Yup.string()
-      .matches(/^[0-9/]+$/, "Date of Publication must contain only numbers and /")
-      .required("Date of Publication is required"),
+      dob: Yup.string()
+      .matches(/^\d{2}\/\d{2}\/\d{4}$/, "Date of Birth must be in DD/MM/YYYY format")
+      .required("Date of Birth is required"),
   });
 
   const formik = useFormik({
@@ -61,6 +61,7 @@ export function Lists({ lists, setLists }) {
           variant="outlined"
           error={formik.touched.title && Boolean(formik.errors.title)}
           helperText={formik.touched.title && formik.errors.title}
+          style={{margin:"20px"}}
         />
         <TextField
           name="author"
@@ -70,6 +71,7 @@ export function Lists({ lists, setLists }) {
           variant="outlined"
           error={formik.touched.author && Boolean(formik.errors.author)}
           helperText={formik.touched.author && formik.errors.author}
+          style={{margin:"20px"}}
         />
         <TextField
           name="isbn"
@@ -79,6 +81,7 @@ export function Lists({ lists, setLists }) {
           variant="outlined"
           error={formik.touched.isbn && Boolean(formik.errors.isbn)}
           helperText={formik.touched.isbn && formik.errors.isbn}
+          style={{margin:"20px"}}
         />
         <TextField
           name="dob"
@@ -88,16 +91,17 @@ export function Lists({ lists, setLists }) {
           variant="outlined"
           error={formik.touched.dob && Boolean(formik.errors.dob)}
           helperText={formik.touched.dob && formik.errors.dob}
+          style={{margin:"20px"}}
         />
 
         {editingId !== null ? (
-          <Button type="submit">Update</Button>
+          <Button type="submit" variant="contained" style={{margin:"20px"}}>Update</Button>
         ) : (
-          <Button type="submit">Add Lists</Button>
+          <Button type="submit" variant="contained" style={{margin:"20px"}}>Add Lists</Button>
         )}
       </div>
 
-      <div className='lists'>
+      <div className="arranging">
         {lists.map((li, index) => (
           <div key={index}>
             <AllLists lists={li} onEdit={() => handleEdit(index)} onDelete={() => handleDelete(index)} />

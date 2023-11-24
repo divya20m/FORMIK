@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import { useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Home } from './Home';
 import { NotFoundPage } from './NotFoundPage';
 import { Lists } from './Lists'
 import { Authors } from './Authors';
@@ -18,12 +17,11 @@ function App() {
     <ThemeProvider theme={theme}>
     <div className="App">
       <CssBaseline />
-      <Button onClick={()=>{Navigate("/")}}>Home</Button>
+      <div className='routers'>
       <Button onClick={()=>{Navigate("/Lists")}}>Lists</Button>
       <Button onClick={()=>{Navigate("/Authors")}}>Authors</Button>
-    
+      </div>
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/Lists" element={<Lists lists={lists} setLists={setLists} />} />
         <Route path="/Authors" element={<Authors authors={authors} setAuthors={setAuthors} />
 } />
